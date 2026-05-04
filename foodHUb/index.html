@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>FoodHub — Multi-Restaurant System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="scripts.js" defer></script>
+</head>
+
+<body>
+
+  <!-- SVG SPRITE -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="ico-logo" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 2C12 2 7 7.5 7 12.5C7 15.538 9.239 18 12 18C14.761 18 17 15.538 17 12.5C17 10 15 8 15 8C15 10 13.5 11 12.5 11C11.5 11 11 10 11 9C11 7 12 5 12 2Z"
+        fill="currentColor" />
+      <circle cx="12" cy="21" r="1.5" fill="currentColor" opacity=".45" />
+    </symbol>
+    <symbol id="ico-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+    </symbol>
+    <symbol id="ico-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </symbol>
+    <symbol id="ico-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </symbol>
+    <symbol id="ico-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3" />
+      <path
+        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </symbol>
+    <symbol id="ico-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+      <circle cx="12" cy="12" r="3" />
+    </symbol>
+    <symbol id="ico-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1" />
+      <circle cx="20" cy="21" r="1" />
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+    </symbol>
+    <symbol id="ico-arrow-r" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </symbol>
+    <symbol id="ico-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+      <circle cx="12" cy="10" r="3" />
+    </symbol>
+    <symbol id="ico-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round">
+      <line x1="18" y1="20" x2="18" y2="10" />
+      <line x1="12" y1="20" x2="12" y2="4" />
+      <line x1="6" y1="20" x2="6" y2="14" />
+    </symbol>
+    <symbol id="ico-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+      <polyline points="16 17 21 12 16 7" />
+      <line x1="21" y1="12" x2="9" y2="12" />
+    </symbol>
+    <symbol id="ico-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
+    </symbol>
+    <symbol id="ico-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polygon
+        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </symbol>
+    <symbol id="ico-pkg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+      stroke-linejoin="round">
+      <line x1="16.5" y1="9.4" x2="7.5" y2="4.21" />
+      <path
+        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+      <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+      <line x1="12" y1="22.08" x2="12" y2="12" />
+    </symbol>
+    <symbol id="ico-insta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </symbol>
+    <symbol id="ico-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </symbol>
+    <symbol id="ico-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round">
+      <line x1="8" y1="6" x2="21" y2="6" />
+      <line x1="8" y1="12" x2="21" y2="12" />
+      <line x1="8" y1="18" x2="21" y2="18" />
+      <line x1="3" y1="6" x2="3.01" y2="6" />
+      <line x1="3" y1="12" x2="3.01" y2="12" />
+      <line x1="3" y1="18" x2="3.01" y2="18" />
+    </symbol>
+    <symbol id="ico-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12" />
+    </symbol>
+  </svg>
+
+  <!-- RESTAURANT DETAILS MODAL (Admin) -->
+  <div class="overlay" id="restDetailsOverlay">
+    <div class="modal modal-lg">
+      <div class="modal-head">
+        <div class="modal-title" id="rdTitle">Restaurant Details</div>
+        <button class="modal-x" onclick="closeOverlay('restDetailsOverlay')"><svg>
+            <use href="#ico-x" />
+          </svg></button>
+      </div>
+      <div class="modal-body" id="rdBody"></div>
+      <div class="modal-foot">
+        <button class="btn btn-primary" onclick="closeOverlay('restDetailsOverlay')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER DETAILS MODAL (Admin) -->
+  <div class="overlay" id="userDetailsOverlay">
+    <div class="modal modal-lg">
+      <div class="modal-head">
+        <div class="modal-title" id="udTitle">User Details</div>
+        <button class="modal-x" onclick="closeOverlay('userDetailsOverlay')"><svg>
+            <use href="#ico-x" />
+          </svg></button>
+      </div>
+      <div class="modal-body" id="udBody"></div>
+      <div class="modal-foot">
+        <button class="btn btn-primary" onclick="closeOverlay('userDetailsOverlay')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- NOTIFICATIONS PANEL -->
+  <div class="notif-panel" id="notifPanel">
+    <div class="notif-panel-head">
+      <div class="notif-panel-title">Notifications</div>
+      <span class="notif-mark-all" onclick="markAllRead()">Mark all read</span>
+    </div>
+    <div id="notifList"></div>
+  </div>
+
+  <!-- ═══════════════ AUTH ═══════════════ -->
+  <div id="authScreen">
+    <div class="auth-bg-mesh"></div>
+    <div class="auth-box">
+
+      <div class="auth-left">
+        <div class="auth-left-content">
+          <div class="auth-logo-row">
+            <div class="auth-logo-mark">
+              <svg width="24" height="24">
+                <use href="#ico-logo" />
+              </svg>
+            </div>
+            <div>
+              <div class="auth-logo-name">FoodHub</div>
+              <div class="auth-tagline">Multi-Restaurant Platform</div>
+            </div>
+          </div>
+          <div class="auth-headline">Order. Manage.<br><em>Grow together.</em></div>
+          <div class="auth-desc">A complete platform connecting customers, restaurant owners, and administrators — all
+            in one system.</div>
+          <div class="auth-bullets">
+            <div class="auth-bullet">
+              <div class="auth-bullet-icon"><svg width="15" height="15">
+                  <use href="#ico-cart" />
+                </svg></div>
+              <span>Browse menus &amp; place orders in seconds</span>
+            </div>
+            <div class="auth-bullet">
+              <div class="auth-bullet-icon"><svg width="15" height="15">
+                  <use href="#ico-pin" />
+                </svg></div>
+              <span>Real-time order tracking with status log</span>
+            </div>
+            <div class="auth-bullet">
+              <div class="auth-bullet-icon"><svg width="15" height="15">
+                  <use href="#ico-chart" />
+                </svg></div>
+              <span>Seller revenue &amp; top-item analytics</span>
+            </div>
+            <div class="auth-bullet">
+              <div class="auth-bullet-icon"><svg width="15" height="15">
+                  <use href="#ico-settings" />
+                </svg></div>
+              <span>Admin control — users, restaurants, orders</span>
+            </div>
+          </div>
+        </div>
+        <div class="auth-copy">FoodHub &copy; 2024 &middot; Semester Project</div>
+      </div>
+
+      <div class="auth-right">
+        <div class="auth-form-wrap">
+          <div class="auth-form-title">Welcome back</div>
+          <div class="auth-form-sub">Sign in to continue to FoodHub</div>
+          <div class="fld">
+            <label>Sign in as</label>
+            <div class="role-grid">
+              <div class="role-opt active" onclick="pickRole('customer',this)">
+                <div class="role-opt-icon"><svg width="20" height="20">
+                    <use href="#ico-user" />
+                  </svg></div>
+                <div class="role-opt-label">Customer</div>
+              </div>
+              <div class="role-opt" onclick="pickRole('seller',this)">
+                <div class="role-opt-icon"><svg width="20" height="20">
+                    <use href="#ico-store" />
+                  </svg></div>
+                <div class="role-opt-label">Seller</div>
+              </div>
+              <div class="role-opt" onclick="pickRole('admin',this)">
+                <div class="role-opt-icon"><svg width="20" height="20">
+                    <use href="#ico-settings" />
+                  </svg></div>
+                <div class="role-opt-label">Admin</div>
+              </div>
+            </div>
+          </div>
+          <div class="fld">
+            <label>Email address</label>
+            <input id="authEmail" type="email" placeholder="you@example.com" />
+          </div>
+          <div class="fld">
+            <label>Password</label>
+            <div class="input-wrap">
+              <input id="authPass" type="password" placeholder="••••••••"
+                onkeydown="if(event.key==='Enter')doLogin()" />
+              <span class="pass-eye" onclick="togglePass('authPass', this)">
+                <svg width="17" height="17">
+                  <use href="#ico-eye" />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <button class="btn-auth" onclick="doLogin()">
+            Sign In
+            <svg width="16" height="16">
+              <use href="#ico-arrow-r" />
+            </svg>
+          </button>
+          <div class="auth-signup-link" id="authSignupLink">
+            Don't have an account? <a href="#" onclick="showSignup()">Create one</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ APP SHELL ═══════════════ -->
+  <div id="appShell">
+    <nav class="sidebar" id="sidebar">
+      <div class="sb-brand">
+        <div class="sb-brand-row">
+          <div class="sb-mark">
+            <svg width="18" height="18">
+              <use href="#ico-logo" />
+            </svg>
+          </div>
+          <div>
+            <div class="sb-name">FoodHub</div>
+            <div class="sb-tag">Management System</div>
+          </div>
+        </div>
+      </div>
+      <div id="sbNav"></div>
+      <div class="sb-footer">
+        <div class="sb-user" onclick="goto('profile')">
+          <div class="sb-avatar" id="sbAvatar">R</div>
+          <div class="sb-user-info">
+            <div class="sb-uname" id="sbName">Rahul Mehta</div>
+            <div class="sb-urole" id="sbRole">Customer</div>
+          </div>
+        </div>
+        <button class="sb-logout" onclick="doLogout()">
+          <svg width="14" height="14">
+            <use href="#ico-logout" />
+          </svg>
+          Logout
+        </button>
+      </div>
+    </nav>
+
+    <div class="main-area">
+      <div class="topbar">
+        <div class="topbar-left">
+          <div class="topbar-title" id="topTitle">Home</div>
+        </div>
+        <div class="topbar-right">
+          <div class="topbar-date" id="topDate"></div>
+          <div class="topbar-notif-btn" id="notifBtn" onclick="toggleNotif()">
+            <svg width="17" height="17">
+              <use href="#ico-bell" />
+            </svg>
+            <div class="notif-badge" id="notifCount">3</div>
+          </div>
+          <div class="topbar-avatar" id="topAvatar" onclick="goto('profile')">R</div>
+        </div>
+      </div>
+      <div class="page-wrap" id="pageWrap"></div>
+    </div>
+  </div>
+
+  <!-- ADD MENU ITEM MODAL -->
+  <div class="overlay" id="addItemOverlay">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-title" id="addItemTitle">Add Menu Item</div>
+        <button class="modal-x" onclick="closeOverlay('addItemOverlay')"><svg>
+            <use href="#ico-x" />
+          </svg></button>
+      </div>
+      <div class="modal-body">
+        <div class="g2">
+          <div class="fld"><label>Item Name</label><input id="mi-name" placeholder="e.g. Butter Chicken" /></div>
+          <div class="fld"><label>Category</label><input id="mi-cat" placeholder="e.g. Main Course" /></div>
+        </div>
+        <div class="fld"><label>Description</label><textarea id="mi-desc" rows="2"
+            placeholder="Short description..."></textarea></div>
+        <div class="g2">
+          <div class="fld"><label>Price (₹)</label><input id="mi-price" type="number" placeholder="0" /></div>
+          <div class="fld"><label>Stock Qty</label><input id="mi-stock" type="number" placeholder="0" /></div>
+        </div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" onclick="closeOverlay('addItemOverlay')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveMenuItem()">Save Item</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNUP MODAL -->
+  <div class="overlay" id="signupOverlay">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-title">Create Account</div>
+        <button class="modal-x" onclick="closeOverlay('signupOverlay')"><svg>
+            <use href="#ico-x" />
+          </svg></button>
+      </div>
+      <div class="modal-body">
+        <div class="fld">
+          <label>Sign up as</label>
+          <div class="role-grid" style="grid-template-columns:1fr 1fr">
+            <div class="role-opt active" id="su-role-customer" onclick="pickSignupRole('customer')">
+              <div class="role-opt-icon"><svg width="20" height="20">
+                  <use href="#ico-user" />
+                </svg></div>
+              <div class="role-opt-label">Customer</div>
+            </div>
+            <div class="role-opt" id="su-role-seller" onclick="pickSignupRole('seller')">
+              <div class="role-opt-icon"><svg width="20" height="20">
+                  <use href="#ico-store" />
+                </svg></div>
+              <div class="role-opt-label">Seller</div>
+            </div>
+          </div>
+        </div>
+        <div class="g2">
+          <div class="fld"><label>Full Name <span class="req">*</span></label><input id="su-name"
+              placeholder="Your name" /></div>
+          <div class="fld"><label>Phone</label><input id="su-phone" placeholder="10-digit number" /></div>
+        </div>
+        <div class="fld"><label>Email Address <span class="req">*</span></label><input id="su-email" type="email"
+            placeholder="you@example.com" /></div>
+        <div class="fld">
+          <label>Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input id="su-pass" type="password" placeholder="Min 6 characters" />
+            <span class="pass-eye" onclick="togglePass('su-pass', this)"><svg width="17" height="17">
+                <use href="#ico-eye" />
+              </svg></span>
+          </div>
+        </div>
+        <div class="fld">
+          <label>Confirm Password <span class="req">*</span></label>
+          <div class="input-wrap">
+            <input id="su-pass2" type="password" placeholder="Re-enter password" />
+            <span class="pass-eye" onclick="togglePass('su-pass2', this)"><svg width="17" height="17">
+                <use href="#ico-eye" />
+              </svg></span>
+          </div>
+        </div>
+        <div class="fld"><label>Instagram Username</label><input id="su-insta" type="text"
+            placeholder="@username (for order DMs)" /></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" onclick="closeOverlay('signupOverlay')">Cancel</button>
+        <button class="btn btn-primary" onclick="doSignup()">Create Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADDRESS MODAL -->
+  <div class="overlay" id="addrOverlay">
+    <div class="modal">
+      <div class="modal-head">
+        <div class="modal-title">Delivery Address</div>
+        <button class="modal-x" onclick="closeOverlay('addrOverlay')"><svg>
+            <use href="#ico-x" />
+          </svg></button>
+      </div>
+      <div class="modal-body">
+        <div class="g2">
+          <div class="fld"><label>Full Name</label><input id="addr-name" value="Rahul Mehta" /></div>
+          <div class="fld"><label>Phone</label><input id="addr-phone" value="9876543210" /></div>
+        </div>
+        <div class="fld"><label>Street Address</label><input id="addr-street"
+            value="42, 3rd Cross Street, Anna Nagar" /></div>
+        <div class="g2">
+          <div class="fld"><label>City</label><input id="addr-city" value="Chennai" /></div>
+          <div class="fld"><label>Pincode</label><input id="addr-pin" value="600040" /></div>
+        </div>
+        <div class="fld"><label>Delivery Instructions (optional)</label><textarea id="addr-note" rows="2"
+            placeholder="e.g. Ring the bell twice..."></textarea></div>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost" onclick="closeOverlay('addrOverlay')">Cancel</button>
+        <button class="btn btn-primary" onclick="saveAddress()">Save Address</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

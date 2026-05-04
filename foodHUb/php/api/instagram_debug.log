@@ -1,0 +1,10 @@
+[Sun May  3 23:38:21 2026] ❌ Failed to send DM to @@hx.cr3: 404 Client Error: Not Found for url: https://i.instagram.com/api/v1/users/@hx.cr3/usernameinfo/
+[2026-05-03 23:26:40] triggerInstagramNotif → http://127.0.0.1/php/api/send_instagram.php  payload={"user_id":8,"message":"Your FoodHub order #7 has been placed! \ud83c\udf54 We'll keep you updated."}
+[2026-05-03 23:26:40] send_instagram response: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<title>404 Not Found</title>
+</head><body>
+<h1>Not Found</h1>
+<p>The requested URL was not found on this server.</p>
+</body></html>
+
