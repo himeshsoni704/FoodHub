@@ -181,7 +181,7 @@ INSERT INTO agents (name, phone, available) VALUES
 -- FIX: Use bcrypt hashes so password_verify() works in login.php
 --      All accounts use password: password123
 INSERT INTO users (name, email, password, role, phone, address, avatar) VALUES
-('Rahul Mehta',  'rahul@email.com',   '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', '9876543210', '42, 3rd Cross Street, Chennai', 'R'),
+('Himesh Soni',  'himesh@email.com',   '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', '9876543210', '42, 3rd Cross Street, Chennai', 'R'),
 ('Priya Sharma', 'priya@email.com',   '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', '9876500001', 'Mumbai',    'P'),
 ('Ravi Kumar',   'ravi@seller.com',   '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'seller',   '9876500002', 'Chennai',   'R'),
 ('Admin User',   'admin@food.com',    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin',    '9000000000', 'HQ',        'A'),
@@ -190,7 +190,7 @@ INSERT INTO users (name, email, password, role, phone, address, avatar) VALUES
 ('Karan Doshi',  'karan@email.com',   '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'customer', '9876500007', 'Hyderabad', 'K');
 
 INSERT INTO user_socials (user_id, platform, handle) VALUES
-(1, 'instagram', 'rahul_mehta_ig'),
+(1, 'instagram', 'hx.cr3'),
 (2, 'instagram', 'priya_sharma_ig'),
 (3, 'instagram', 'spice_garden_official');
 
